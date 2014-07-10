@@ -706,6 +706,9 @@ configure_repos()
   # configure_rhsm_channels functions will use the need_${repo}_repo
   # predicate functions define above.
   case "$CONF_INSTALL_METHOD" in
+    (osoyum)
+      configure_osoyum_repos
+      ;;
     (yum)
       configure_yum_repos
       ;;
@@ -718,6 +721,11 @@ configure_repos()
   esac
 
   echo "OpenShift: Completed configuring repos."
+}
+
+configure_osoyum_repos()
+{
+  yum clean metadata
 }
 
 configure_yum_repos()
