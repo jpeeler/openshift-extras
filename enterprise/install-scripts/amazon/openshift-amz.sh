@@ -2302,8 +2302,10 @@ validate_preflight()
   preflight_failure=
 
   # Test that this isn't RHEL < 6 or Fedora
-  if ! grep -q "Enterprise.* 6" /etc/redhat-release; then
-    echo "OpenShift: This process needs to begin with Enterprise Linux 6 installed."
+  # CentOS release 6.5 (Final)CentOS release 6.5 (Final)
+  # Red Hat Enterprise Linux Server release 6.5 (Santiago)
+  if ! grep -q "release* 6" /etc/redhat-release; then
+    echo "OpenShift: This process needs to begin with at least release 6 installed."
     preflight_failure=1
   fi
 
